@@ -10,12 +10,27 @@
   </head>
 
   <body>
+    <h1>Music App</h1>
+    <div>
+      <% if current_user.nil? %>
+        <a href= "<%= new_session_url %>">Sign in</a>
+        <a href= "<%= new_user_url %>">Sign up</a>
+      <% else %>
+        <%= current_user.email %>
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Logout">
+        </form>
+      <% end %>
+    </div>
+
+
     <%= yield %>
     <% if flash[:errors] %>
       <% flash[:errors].each do |error| %>
         <p><%= error %></p>
       <% end %>
-
     <% end %>
 
   </body>
