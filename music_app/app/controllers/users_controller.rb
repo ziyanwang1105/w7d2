@@ -12,17 +12,13 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-        render :new 
+        render :new
     end
 
     def show
         incoming_id = params[:id]
         @user = User.find_by(id: incoming_id)
-        if !@user.nil?
-            render :show 
-        else
-            flash.now[:errors] = 
-        end
+        render :show
     end
 
     private
