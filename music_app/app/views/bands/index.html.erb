@@ -1,0 +1,7 @@
+<h1>Band Index</h1>
+<ul>
+    <% @bands.each do |band| %>
+        <li><%= render 'band', band: band, action: :from_index_page %></li>
+    <% end %>
+
+</ul>

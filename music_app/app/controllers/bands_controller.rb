@@ -2,7 +2,7 @@ class BandsController < ApplicationController
     before_action :set_band, only: [:show, :edit, :update, :destroy]
 
     def index
-        @band = Band.all
+        @bands = Band.all
         render :index
     end
 
@@ -16,10 +16,13 @@ class BandsController < ApplicationController
         end
     end
 
+
+
     def new
         @band = Band.new
         render :new
     end
+
 
     def edit
         render :edit
@@ -36,7 +39,7 @@ class BandsController < ApplicationController
             flash.now[:errors] = @band.errors.full_messages
             render :edit
         end
-        
+
     end
 
     def destroy
